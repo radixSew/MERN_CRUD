@@ -1,38 +1,22 @@
-const express=require('express');
-const Posts=require('../models/posts');
+const express = require('express');
+const mongoose =require('mongoose');
+const Posts = require('../models/post');
 
-//const router =express.Router()
-const router = express();
-
-router.post('/post/save',(req,res)=>{
+const router = express.Router();
+//save posts
+// router.post('/post/save', async (req, res) => {
+//   try {
+//     const newPost = new Posts(req.body);
+//     await newPost.save();
     
-    let newPost =new Posts(req.body);
-    newPost.save((err)=>{
-        if(err){
-            return res.status(400).json({
-                error:err
-            });
-        }
-    // newPost.save();
-    
-         res.status(200).json({
-            success:"Posts saved successfully"
-        });
-    });
-});
-//Save posts
-// router.post('/post/save',(req,res)=>{
-//     let newPost =new Posts(req.body);
-//     newPost.save((err)=>{
-//         if(err){
-//             return res.status(400).json({
-//                 error:err
-//             });
-//         }
-//         return res.status(200).json({
-//             success:"Posts saved successfully"
-//         });
+//     res.status(200).json({
+//       success: "Post saved successfully"
 //     });
+//   } catch (error) {
+//     res.status(400).json({
+//       error: error.message || "An error occurred while saving the post"
+//     });
+//   }
 // });
 
-module.exports=router;
+module.exports = router;
